@@ -26,160 +26,162 @@ public class Main {
             return writer;
         });
 
-        //Estableciendo la ruta para mostrar el formulario de agregar estudiantes
-        get("/estudiante/agregar", (req, res) -> {
-            StringWriter writer = new StringWriter();
-            Template template = configuration.getTemplate("templates/agregar-estudiante.ftl");
-            template.process(null, writer);
-            return writer;
-        });
-
-        //Estableciendo la ruta para guardar el estudiante a agregar
-        post("/estudiante/agregar", (req, res) -> {
-            int matricula = Integer.parseInt(req.queryParams("matricula"));
-            String nombre = req.queryParams("nombre");
-            String apellido = req.queryParams("apellido");
-            String telefono = req.queryParams("telefono");
-
-            estudiantes.add(new Estudiante(matricula, nombre, apellido, telefono));
-
-            res.redirect("/");
-            return null;
-        });
-
-        //Estableciendo la ruta para mostrar los datos de un estudiante seleccionado
-        get("/estudiante/:matricula", (req, res) -> {
-            try {
+        path("/estudiante", () -> {
+            //Estableciendo la ruta para mostrar el formulario de agregar estudiantes
+            get("/agregar", (req, res) -> {
                 StringWriter writer = new StringWriter();
-                Template template = configuration.getTemplate("templates/estudiante.ftl");
-                Map<String, Object> atributos = new HashMap<>();
-                Estudiante estudiante = null;
+                Template template = configuration.getTemplate("templates/agregar-estudiante.ftl");
+                template.process(null, writer);
+                return writer;
+            });
+
+            //Estableciendo la ruta para guardar el estudiante a agregar
+            post("/agregar", (req, res) -> {
+                int matricula = Integer.parseInt(req.queryParams("matricula"));
+                String nombre = req.queryParams("nombre");
+                String apellido = req.queryParams("apellido");
+                String telefono = req.queryParams("telefono");
+
+                estudiantes.add(new Estudiante(matricula, nombre, apellido, telefono));
+
+                res.redirect("/");
+                return null;
+            });
+
+            //Estableciendo la ruta para mostrar los datos de un estudiante seleccionado
+            get("/:matricula", (req, res) -> {
+                try {
+                    StringWriter writer = new StringWriter();
+                    Template template = configuration.getTemplate("templates/estudiante.ftl");
+                    Map<String, Object> atributos = new HashMap<>();
+                    Estudiante estudiante = null;
+
+                    for (Estudiante est : estudiantes) {
+                        if (est.getMatricula() == Integer.parseInt(req.params("matricula"))) {
+                            estudiante = est;
+                        }
+                    }
+
+                    if (estudiante == null) {
+                        throw new Exception();
+                    }
+
+                    atributos.put("estudiante", estudiante);
+                    template.process(atributos, writer);
+                    return writer;
+                } catch (Exception error) {
+                    res.status(404);
+
+                    StringWriter writer = new StringWriter();
+                    Template template = configuration.getTemplate("templates/404.ftl");
+                    template.process(null, writer);
+
+                    res.body(writer.toString());
+                    return writer;
+                }
+            });
+
+            //Estableciendo la ruta para mostrar el formulario de editar estudiante
+            get("/editar/:matricula", (req, res) -> {
+                try {
+                    StringWriter writer = new StringWriter();
+                    Template template = configuration.getTemplate("templates/editar-estudiante.ftl");
+                    Map<String, Object> atributos = new HashMap<>();
+                    Estudiante estudiante = null;
+
+                    for (Estudiante est : estudiantes) {
+                        if (est.getMatricula() == Integer.parseInt(req.params("matricula"))) {
+                            estudiante = est;
+                        }
+                    }
+
+                    if (estudiante == null) {
+                        throw new Exception();
+                    }
+
+                    atributos.put("estudiante", estudiante);
+                    template.process(atributos, writer);
+                    return writer;
+                } catch (Exception error) {
+                    res.status(404);
+
+                    StringWriter writer = new StringWriter();
+                    Template template = configuration.getTemplate("templates/404.ftl");
+                    template.process(null, writer);
+
+                    res.body(writer.toString());
+                    return writer;
+                }
+            });
+
+            //Estableciendo la ruta para guardar los cambios editados en el estudiante
+            post("/editar", (req, res) -> {
+                int matricula = Integer.parseInt(req.queryParams("matricula"));
+                String nombre = req.queryParams("nombre");
+                String apellido = req.queryParams("apellido");
+                String telefono = req.queryParams("telefono");
 
                 for (Estudiante est : estudiantes) {
-                    if (est.getMatricula() == Integer.parseInt(req.params("matricula"))) {
+                    if (est.getMatricula() == matricula) {
+                        est.setNombre(nombre);
+                        est.setApellido(apellido);
+                        est.setTelefono(telefono);
+                    }
+                }
+
+                res.redirect("/");
+                return null;
+            });
+
+            //Estableciendo la ruta para mostrar el aviso de confirmación de borrar estudiante
+            get("/borrar/:matricula", (req, res) -> {
+                try {
+                    StringWriter writer = new StringWriter();
+                    Template template = configuration.getTemplate("templates/borrar-estudiante.ftl");
+                    Map<String, Object> atributos = new HashMap<>();
+                    Estudiante estudiante = null;
+
+                    for (Estudiante est : estudiantes) {
+                        if (est.getMatricula() == Integer.parseInt(req.params("matricula"))) {
+                            estudiante = est;
+                        }
+                    }
+
+                    if (estudiante == null) {
+                        throw new Exception();
+                    }
+
+                    atributos.put("estudiante", estudiante);
+                    template.process(atributos, writer);
+                    return writer;
+                } catch (Exception error) {
+                    res.status(404);
+
+                    StringWriter writer = new StringWriter();
+                    Template template = configuration.getTemplate("templates/404.ftl");
+                    template.process(null, writer);
+
+                    res.body(writer.toString());
+                    return writer;
+                }
+            });
+
+            //Estableciendo la ruta para ejecutar el borrado del estudiante
+            post("/borrar/:matricula", (req, res) -> {
+                int matricula = Integer.parseInt(req.params("matricula"));
+
+                Estudiante estudiante = null;
+                for (Estudiante est : estudiantes) {
+                    if (est.getMatricula() == matricula) {
                         estudiante = est;
                     }
                 }
 
-                if (estudiante == null) {
-                    throw new Exception();
-                }
+                estudiantes.remove(estudiante);
 
-                atributos.put("estudiante", estudiante);
-                template.process(atributos, writer);
-                return writer;
-            } catch (Exception error) {
-                res.status(404);
-
-                StringWriter writer = new StringWriter();
-                Template template = configuration.getTemplate("templates/404.ftl");
-                template.process(null, writer);
-
-                res.body(writer.toString());
-                return writer;
-            }
-        });
-
-        //Estableciendo la ruta para mostrar el formulario de editar estudiante
-        get("estudiante/editar/:matricula", (req, res) -> {
-            try {
-                StringWriter writer = new StringWriter();
-                Template template = configuration.getTemplate("templates/editar-estudiante.ftl");
-                Map<String, Object> atributos = new HashMap<>();
-                Estudiante estudiante = null;
-
-                for (Estudiante est : estudiantes) {
-                    if (est.getMatricula() == Integer.parseInt(req.params("matricula"))) {
-                        estudiante = est;
-                    }
-                }
-
-                if (estudiante == null) {
-                    throw new Exception();
-                }
-
-                atributos.put("estudiante", estudiante);
-                template.process(atributos, writer);
-                return writer;
-            } catch (Exception error) {
-                res.status(404);
-
-                StringWriter writer = new StringWriter();
-                Template template = configuration.getTemplate("templates/404.ftl");
-                template.process(null, writer);
-
-                res.body(writer.toString());
-                return writer;
-            }
-        });
-
-        //Estableciendo la ruta para guardar los cambios editados en el estudiante
-        post("/estudiante/editar", (req, res) -> {
-            int matricula = Integer.parseInt(req.queryParams("matricula"));
-            String nombre = req.queryParams("nombre");
-            String apellido = req.queryParams("apellido");
-            String telefono = req.queryParams("telefono");
-
-            for (Estudiante est : estudiantes) {
-                if (est.getMatricula() == matricula) {
-                    est.setNombre(nombre);
-                    est.setApellido(apellido);
-                    est.setTelefono(telefono);
-                }
-            }
-
-            res.redirect("/");
-            return null;
-        });
-
-        //Estableciendo la ruta para mostrar el aviso de confirmación de borrar estudiante
-        get("/estudiante/borrar/:matricula", (req, res) -> {
-            try {
-                StringWriter writer = new StringWriter();
-                Template template = configuration.getTemplate("templates/borrar-estudiante.ftl");
-                Map<String, Object> atributos = new HashMap<>();
-                Estudiante estudiante = null;
-
-                for (Estudiante est : estudiantes) {
-                    if (est.getMatricula() == Integer.parseInt(req.params("matricula"))) {
-                        estudiante = est;
-                    }
-                }
-
-                if (estudiante == null) {
-                    throw new Exception();
-                }
-
-                atributos.put("estudiante", estudiante);
-                template.process(atributos, writer);
-                return writer;
-            } catch (Exception error) {
-                res.status(404);
-
-                StringWriter writer = new StringWriter();
-                Template template = configuration.getTemplate("templates/404.ftl");
-                template.process(null, writer);
-
-                res.body(writer.toString());
-                return writer;
-            }
-        });
-
-        //Estableciendo la ruta para ejecutar el borrado del estudiante
-        post("/estudiante/borrar/:matricula", (req, res) -> {
-            int matricula = Integer.parseInt(req.params("matricula"));
-
-            Estudiante estudiante = null;
-            for (Estudiante est : estudiantes) {
-                if (est.getMatricula() == matricula) {
-                    estudiante = est;
-                }
-            }
-
-            estudiantes.remove(estudiante);
-
-            res.redirect("/");
-            return null;
+                res.redirect("/");
+                return null;
+            });
         });
     }
 }
