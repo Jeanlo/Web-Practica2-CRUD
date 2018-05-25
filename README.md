@@ -22,3 +22,4 @@ Crear una aplicación web utilizando SparkJava que permita ejecutar las tareas e
 - [X] Insertar estudiantes.
 - [ ] Actualizar estudiantes.
 - [ ] Consultar estudiantes.
+- [ ] Eliminar estudiantes.
