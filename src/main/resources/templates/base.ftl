@@ -33,7 +33,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item">
-                                    <a class="btn btn-outline-secondary rounded-0" href="/agregar-estudiante">
+                                    <a class="btn btn-outline-secondary rounded-0" href="/estudiante/agregar">
                                         <i class="fas fa-user-plus"></i> Agregar estudiante
                                     </a>
                                 </li>

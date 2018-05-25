@@ -7,7 +7,7 @@
                 <i class="fas fa-user-plus"></i> Agregar estudiante
             </h5>
         </div>
-        <form action="/agregar-estudiante" method="post" class="p-2">
+        <form action="/estudiante/agregar" method="post" class="p-2">
             <div class="form-group">
                 <label for="matricula">Matricula</label>
                 <input type="text" class="form-control rounded-0" name="matricula" placeholder="matricula">
