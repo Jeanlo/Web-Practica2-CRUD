@@ -12,11 +12,11 @@ import freemarker.template.Version;
 public class Main {
     public static void main(String[] args) {
         staticFiles.location("/public");
+
         final Configuration configuration = new Configuration(new Version(2, 3, 28));
         configuration.setClassForTemplateLoading(Main.class, "/");
 
         ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
-        estudiantes.add(new Estudiante(20131459, "Jean", "Tejeda", "809"));
 
         get("/", (req, res) -> {
             StringWriter writer = new StringWriter();
@@ -32,6 +32,18 @@ public class Main {
             Template template = configuration.getTemplate("templates/agregar-estudiante.ftl");
             template.process(null, writer);
             return writer;
+        });
+
+        post("/agregar-estudiante", (req, res) -> {
+            int matricula = Integer.parseInt(req.queryParams("matricula"));
+            String nombre = req.queryParams("nombre");
+            String apellido = req.queryParams("apellido");
+            String telefono = req.queryParams("telefono");
+
+            estudiantes.add(new Estudiante(matricula, nombre, apellido, telefono));
+            res.redirect("/");
+
+            return null;
         });
     }
 }

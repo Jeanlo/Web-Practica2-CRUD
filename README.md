@@ -18,7 +18,7 @@ Crear una aplicación web utilizando SparkJava que permita ejecutar las tareas e
 ## Lista de tareas
 
 - [X] Utilizar una colección estática de Estudiantes, utilizando la clase Estudiante que requiere de los siguientes atributos: `matricula: int`, `nombre: string`, `apellido: string`, `telefono: string`.
-- [ ] Listar estudiantes.
-- [ ] Insertar estudiantes.
+- [X] Listar estudiantes.
+- [X] Insertar estudiantes.
 - [ ] Actualizar estudiantes.
 - [ ] Consultar estudiantes.
