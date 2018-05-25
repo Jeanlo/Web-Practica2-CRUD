@@ -45,5 +45,22 @@ public class Main {
 
             return null;
         });
+
+        get("/estudiante/:matricula", (req, res) -> {
+            StringWriter writer = new StringWriter();
+            Template template = configuration.getTemplate("templates/estudiante.ftl");
+            Map<String, Object> atributos = new HashMap<>();
+            Estudiante estudiante = null;
+
+            for(Estudiante est : estudiantes) {
+                if(est.getMatricula() == Integer.parseInt(req.params("matricula"))) {
+                    estudiante = est;
+                }
+            }
+
+            atributos.put("estudiante", estudiante);
+            template.process(atributos, writer);
+            return writer;
+        });
     }
 }
