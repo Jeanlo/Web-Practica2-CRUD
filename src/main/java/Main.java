@@ -25,14 +25,14 @@ public class Main {
             return writer;
         });
 
-        get("/agregar-estudiante", (req, res) -> {
+        get("/estudiante/agregar", (req, res) -> {
             StringWriter writer = new StringWriter();
             Template template = configuration.getTemplate("templates/agregar-estudiante.ftl");
             template.process(null, writer);
             return writer;
         });
 
-        post("/agregar-estudiante", (req, res) -> {
+        post("/estudiante/agregar", (req, res) -> {
             int matricula = Integer.parseInt(req.queryParams("matricula"));
             String nombre = req.queryParams("nombre");
             String apellido = req.queryParams("apellido");
