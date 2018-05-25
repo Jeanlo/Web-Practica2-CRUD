@@ -11,8 +11,6 @@ import freemarker.template.Version;
 
 public class Main {
     public static void main(String[] args) {
-        staticFiles.location("/public");
-
         final Configuration configuration = new Configuration(new Version(2, 3, 28));
         configuration.setClassForTemplateLoading(Main.class, "/");
 
