@@ -15,10 +15,14 @@ public class Main {
         final Configuration configuration = new Configuration(new Version(2, 3, 28));
         configuration.setClassForTemplateLoading(Main.class, "/");
 
+        ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
+        estudiantes.add(new Estudiante(20131459, "Jean", "Tejeda", "809"));
+
         get("/", (req, res) -> {
             StringWriter writer = new StringWriter();
             Template template = configuration.getTemplate("templates/index.ftl");
             Map<String, Object> atributos = new HashMap<>();
+            atributos.put("estudiantes", estudiantes);
             template.process(atributos, writer);
             return writer;
         });
