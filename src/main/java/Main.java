@@ -75,5 +75,38 @@ public class Main {
                 return writer;
             }
         });
+
+        get("estudiante/editar/:matricula", (req, res) -> {
+            try {
+                StringWriter writer = new StringWriter();
+                Template template = configuration.getTemplate("templates/editar-estudiante.ftl");
+                Map<String, Object> atributos = new HashMap<>();
+                Estudiante estudiante = null;
+
+                for(Estudiante est : estudiantes) {
+                    if(est.getMatricula() == Integer.parseInt(req.params("matricula"))) {
+                        estudiante = est;
+                    }
+                }
+
+                if(estudiante == null) {
+                    throw new Exception();
+                }
+
+                atributos.put("estudiante", estudiante);
+                template.process(atributos, writer);
+                return writer;
+            } catch(Exception error) {
+                res.status(404);
+
+                StringWriter writer = new StringWriter();
+                Template template = configuration.getTemplate("templates/404.ftl");
+                template.process(null, writer);
+
+                res.body(writer.toString());
+                return writer;
+            }
+        });
+
     }
 }
