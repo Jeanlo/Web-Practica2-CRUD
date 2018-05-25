@@ -39,8 +39,8 @@ public class Main {
             String telefono = req.queryParams("telefono");
 
             estudiantes.add(new Estudiante(matricula, nombre, apellido, telefono));
-            res.redirect("/");
 
+            res.redirect("/");
             return null;
         });
 
@@ -108,5 +108,22 @@ public class Main {
             }
         });
 
+        post("/estudiante/editar", (req, res) -> {
+            int matricula = Integer.parseInt(req.queryParams("matricula"));
+            String nombre = req.queryParams("nombre");
+            String apellido = req.queryParams("apellido");
+            String telefono = req.queryParams("telefono");
+
+            for(Estudiante est : estudiantes) {
+                if(est.getMatricula() == matricula) {
+                    est.setNombre(nombre);
+                    est.setApellido(apellido);
+                    est.setTelefono(telefono);
+                }
+            }
+
+            res.redirect("/");
+            return null;
+        });
     }
 }

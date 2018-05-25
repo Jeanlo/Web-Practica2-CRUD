@@ -19,7 +19,7 @@
                     <a class="btn btn-outline-secondary border-0 rounded-0" type="button" href="/estudiante/${estudiante.matricula?string["0"]}">
                         <i class="fas fa-user"></i> Mostrar
                     </a>
-                    <a class="btn btn-outline-secondary border-0 rounded-0" type="button">
+                    <a class="btn btn-outline-secondary border-0 rounded-0" type="button" href="/estudiante/editar/${estudiante.matricula?string["0"]}">
                         <i class="fas fa-user-edit"></i> Editar
                     </a>
                     <a class="btn btn-outline-secondary border-0 rounded-0" type="button">

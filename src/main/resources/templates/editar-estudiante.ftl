@@ -7,10 +7,10 @@
                 <i class="fas fa-user-edit"></i> Editar estudiante
             </h5>
         </div>
-        <form action="/editar-estudiante" method="post" class="p-2">
+        <form action="/estudiante/editar" method="post" class="p-2">
             <div class="form-group">
                 <label for="matricula">Matricula</label>
-                <input type="text" class="form-control rounded-0" name="matricula" placeholder="matricula" value="${estudiante.matricula}">
+                <input type="text" class="form-control rounded-0" name="matricula" placeholder="matricula" readonly value="${estudiante.matricula?string["0"]}">
             </div>
             <div class="row">
                 <div class="col-6">
