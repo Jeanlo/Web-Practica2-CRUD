@@ -1,4 +1,4 @@
-# Práctica 1 - jsoup
+# Práctica 2 - CRUD
 
 ![PUCMMM-logo](https://i.imgur.com/9eEIci9.png)
 
