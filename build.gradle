@@ -11,6 +11,8 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'com.sparkjava', name: 'spark-core', version: '2.7.2'
+    compile group: 'org.freemarker', name: 'freemarker', version: '2.3.28'
 }
 group 'web.programacion'
 version '1.0-SNAPSHOT'
