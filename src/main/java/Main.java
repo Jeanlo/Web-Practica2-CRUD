@@ -158,8 +158,20 @@ public class Main {
             }
         });
 
-        post("/estudiante/borrar", (req, res) -> {
-           return null;
+        post("/estudiante/borrar/:matricula", (req, res) -> {
+            int matricula = Integer.parseInt(req.params("matricula"));
+
+            Estudiante estudiante = null;
+            for(Estudiante est : estudiantes) {
+                if(est.getMatricula() == matricula) {
+                    estudiante = est;
+                }
+            }
+
+            estudiantes.remove(estudiante);
+
+            res.redirect("/");
+            return null;
         });
     }
 }
