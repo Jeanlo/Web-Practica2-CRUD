@@ -26,5 +26,12 @@ public class Main {
             template.process(atributos, writer);
             return writer;
         });
+
+        get("/agregar-estudiante", (req, res) -> {
+            StringWriter writer = new StringWriter();
+            Template template = configuration.getTemplate("templates/agregar-estudiante.ftl");
+            template.process(null, writer);
+            return writer;
+        });
     }
 }
