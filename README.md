@@ -31,8 +31,8 @@ Crear una aplicación web utilizando SparkJava que permita ejecutar las tareas e
       String telefono;
     }
     ```
-- [X] Listar estudiantes.
-- [X] Agregar estudiante.
-- [X] Consultar estudiante.
-- [X] Editar estudiante.
-- [X] Borrar estudiante.
+- [X] **Listar estudiantes** - Mostrar un listado de todos los estudiantes que están en la colección estática.
+- [X] **Agregar estudiante** - Mostrar un formulario de registro de estudiante, y añadir el estudiante a la colección estática.
+- [X] **Ver estudiante** - Mostrar la información de un estudiante en especifico.
+- [X] **Editar estudiante** - Mostrar un formulario de edición para el estudiante especificado, y guardar los cambios realizados en el estudiante que está en la colección estática.
+- [X] **Borrar estudiante** - Mostrar una confirmación de borrado de un estudiante especificado, y eliminar al estudiante de la colección estática.
