@@ -6,7 +6,7 @@ Segunda práctica realizada para la asignatura **Programación Web (ISC-415)** p
 
 ## Objetivo general
 
-Crear una aplicación web utilizando SparkJava que permita ejecutar las tareas especificadas en la sección [Lista de tareas](#lista-de-tareas).
+Crear una aplicación web utilizando SparkJava que permita ejecutar las tareas especificadas en la sección [Tareas requeridas](#tareas-requeridas).
 
 ## Tecnologías requeridas
 
@@ -31,7 +31,7 @@ class Estudiante {
 }
 ```
 
-## Lista de tareas
+## Tareas requeridas
 
 - [X] **Listar estudiantes** - Mostrar un listado de todos los estudiantes que están en la colección estática.
 - [X] **Agregar estudiante** - Mostrar un formulario de registro de estudiante, y añadir el estudiante a la colección estática.
