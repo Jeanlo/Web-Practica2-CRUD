@@ -8,16 +8,21 @@ Segunda práctica realizada para la asignatura **Programación Web (ISC-415)** p
 
 Crear una aplicación web utilizando SparkJava que permita ejecutar las tareas especificadas en la sección [Lista de tareas](#lista-de-tareas).
 
-## Tecnologías utilizadas
+## Tecnologías requeridas
 
 - Java SE
 - Gradle
 - SparkJava
 - FreeMarker
 
+## Otras tecnologías utilizadas
+
+- Bootstrap 4
+- Font Awesome 5
+
 ## Lista de tareas
 
-- [X] Utilizar una colección estática de Estudiantes, utilizando la clase Estudiante que requiere de los siguientes atributos: `matricula: int`, `nombre: string`, `apellido: string`, `telefono: string`.
+- [X] Utilizar una colección estática de Estudiantes, utilizando la clase Estudiante que requiere de los siguientes atributos: `{ matricula: int, nombre: String, apellido: String, telefono: String }`.
 - [X] Listar estudiantes.
 - [X] Agregar estudiante.
 - [X] Consultar estudiante.
