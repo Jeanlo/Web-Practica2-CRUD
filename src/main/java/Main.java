@@ -26,6 +26,7 @@ public class Main {
             return writer;
         });
 
+        //Agrupando todas las rutas /estudiante/* para simplificar su establecimiento
         path("/estudiante", () -> {
             //Estableciendo la ruta para mostrar el formulario de agregar estudiantes
             get("/agregar", (req, res) -> {
