@@ -20,17 +20,19 @@ Crear una aplicación web utilizando SparkJava que permita ejecutar las tareas e
 - Bootstrap 4
 - Font Awesome 5
 
+## Modelo de datos
+Para esta aplicación es requerido utilizar una colección estática de Estudiantes, para lo cual es necesaria la construcción de la clase Estudiante como parte del modelo de datos, y aquí se muestra su estructura:
+```java
+class Estudiante { 
+  int matricula;
+  String nombre;
+  String apellido;
+  String telefono;
+}
+```
+
 ## Lista de tareas
 
-- [X] Crear una colección estática de Estudiantes, utilizando la clase Estudiante que requiere de los siguientes atributos: 
-    ```java
-    class Estudiante { 
-      int matricula;
-      String nombre;
-      String apellido;
-      String telefono;
-    }
-    ```
 - [X] **Listar estudiantes** - Mostrar un listado de todos los estudiantes que están en la colección estática.
 - [X] **Agregar estudiante** - Mostrar un formulario de registro de estudiante, y añadir el estudiante a la colección estática.
 - [X] **Ver estudiante** - Mostrar la información de un estudiante en específico.

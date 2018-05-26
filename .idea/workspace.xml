@@ -37,9 +37,9 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="337">
-                <caret line="37" column="146" selection-start-line="37" selection-start-column="146" selection-end-line="37" selection-end-column="146" />
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="218">
+                <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
               </first_editor>
               <second_editor />
             </state>
@@ -593,7 +593,7 @@
       <updated>1527207760266</updated>
       <workItem from="1527207761890" duration="4439000" />
       <workItem from="1527214502859" duration="7205000" />
-      <workItem from="1527301394139" duration="5860000" />
+      <workItem from="1527301394139" duration="6359000" />
     </task>
     <task id="LOCAL-00001" summary="Empezando con la vista de inicio y estructura">
       <created>1527210714656</created>
@@ -770,11 +770,25 @@
       <option name="project" value="LOCAL" />
       <updated>1527308860639</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Detallando to-do del readme.">
+      <created>1527309423453</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1527309423453</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Mejorando ortografía en readme.">
+      <created>1527309560278</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1527309560278</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22017000" />
+    <option name="totallyTimeSpent" value="22516000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -819,7 +833,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Empezando con la vista de inicio y estructura" />
     <MESSAGE value="Creando clase Estudiante y la lista de los mismos" />
     <MESSAGE value="Empezando con la inserción" />
     <MESSAGE value="Actualizando readme" />
@@ -843,7 +856,9 @@
     <MESSAGE value="Actualizando estructura de Estudiante en readme." />
     <MESSAGE value="Formateando Estudiante en readme." />
     <MESSAGE value="Clase Estudiante en readme en formato Java." />
-    <option name="LAST_COMMIT_MESSAGE" value="Clase Estudiante en readme en formato Java." />
+    <MESSAGE value="Detallando to-do del readme." />
+    <MESSAGE value="Mejorando ortografía en readme." />
+    <option name="LAST_COMMIT_MESSAGE" value="Mejorando ortografía en readme." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
@@ -1144,9 +1159,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="337">
-            <caret line="37" column="146" selection-start-line="37" selection-start-column="146" selection-end-line="37" selection-end-column="146" />
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="218">
+            <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
           </first_editor>
           <second_editor />
         </state>
