@@ -71,14 +71,8 @@ public class Main {
                     template.process(atributos, writer);
                     return writer;
                 } catch (Exception error) {
-                    res.status(404);
-
-                    StringWriter writer = new StringWriter();
-                    Template template = configuration.getTemplate("templates/404.ftl");
-                    template.process(null, writer);
-
-                    res.body(writer.toString());
-                    return writer;
+                    error.printStackTrace();
+                    return null;
                 }
             });
 
@@ -104,14 +98,8 @@ public class Main {
                     template.process(atributos, writer);
                     return writer;
                 } catch (Exception error) {
-                    res.status(404);
-
-                    StringWriter writer = new StringWriter();
-                    Template template = configuration.getTemplate("templates/404.ftl");
-                    template.process(null, writer);
-
-                    res.body(writer.toString());
-                    return writer;
+                    error.printStackTrace();
+                    return null;
                 }
             });
 
@@ -156,14 +144,8 @@ public class Main {
                     template.process(atributos, writer);
                     return writer;
                 } catch (Exception error) {
-                    res.status(404);
-
-                    StringWriter writer = new StringWriter();
-                    Template template = configuration.getTemplate("templates/404.ftl");
-                    template.process(null, writer);
-
-                    res.body(writer.toString());
-                    return writer;
+                    error.printStackTrace();
+                    return null;
                 }
             });
 
@@ -183,6 +165,17 @@ public class Main {
                 res.redirect("/");
                 return null;
             });
+        });
+
+        notFound((req, res) -> {
+            res.status(404);
+
+            StringWriter writer = new StringWriter();
+            Template template = configuration.getTemplate("templates/404.ftl");
+            template.process(null, writer);
+
+            res.body(writer.toString());
+            return writer;
         });
     }
 }
