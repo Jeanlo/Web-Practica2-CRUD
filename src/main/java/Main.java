@@ -19,10 +19,12 @@ public class Main {
         //Estableciendo la ruta de inicio, enviando el listado de estudiantes
         get("/", (req, res) -> {
             StringWriter writer = new StringWriter();
-            Template template = configuration.getTemplate("templates/index.ftl");
             Map<String, Object> atributos = new HashMap<>();
+            Template template = configuration.getTemplate("templates/index.ftl");
+
             atributos.put("estudiantes", estudiantes);
             template.process(atributos, writer);
+
             return writer;
         });
 
@@ -32,7 +34,9 @@ public class Main {
             get("/agregar", (req, res) -> {
                 StringWriter writer = new StringWriter();
                 Template template = configuration.getTemplate("templates/agregar-estudiante.ftl");
+
                 template.process(null, writer);
+
                 return writer;
             });
 
@@ -46,6 +50,7 @@ public class Main {
                 estudiantes.add(new Estudiante(matricula, nombre, apellido, telefono));
 
                 res.redirect("/");
+
                 return null;
             });
 
@@ -53,9 +58,9 @@ public class Main {
             get("/:matricula", (req, res) -> {
                 try {
                     StringWriter writer = new StringWriter();
-                    Template template = configuration.getTemplate("templates/estudiante.ftl");
                     Map<String, Object> atributos = new HashMap<>();
                     Estudiante estudiante = null;
+                    Template template = configuration.getTemplate("templates/estudiante.ftl");
 
                     for (Estudiante est : estudiantes) {
                         if (est.getMatricula() == Integer.parseInt(req.params("matricula"))) {
@@ -69,9 +74,11 @@ public class Main {
 
                     atributos.put("estudiante", estudiante);
                     template.process(atributos, writer);
+
                     return writer;
                 } catch (Exception error) {
                     error.printStackTrace();
+
                     return null;
                 }
             });
@@ -80,9 +87,9 @@ public class Main {
             get("/editar/:matricula", (req, res) -> {
                 try {
                     StringWriter writer = new StringWriter();
-                    Template template = configuration.getTemplate("templates/editar-estudiante.ftl");
                     Map<String, Object> atributos = new HashMap<>();
                     Estudiante estudiante = null;
+                    Template template = configuration.getTemplate("templates/editar-estudiante.ftl");
 
                     for (Estudiante est : estudiantes) {
                         if (est.getMatricula() == Integer.parseInt(req.params("matricula"))) {
@@ -96,9 +103,11 @@ public class Main {
 
                     atributos.put("estudiante", estudiante);
                     template.process(atributos, writer);
+
                     return writer;
                 } catch (Exception error) {
                     error.printStackTrace();
+
                     return null;
                 }
             });
@@ -119,6 +128,7 @@ public class Main {
                 }
 
                 res.redirect("/");
+
                 return null;
             });
 
@@ -126,9 +136,9 @@ public class Main {
             get("/borrar/:matricula", (req, res) -> {
                 try {
                     StringWriter writer = new StringWriter();
-                    Template template = configuration.getTemplate("templates/borrar-estudiante.ftl");
                     Map<String, Object> atributos = new HashMap<>();
                     Estudiante estudiante = null;
+                    Template template = configuration.getTemplate("templates/borrar-estudiante.ftl");
 
                     for (Estudiante est : estudiantes) {
                         if (est.getMatricula() == Integer.parseInt(req.params("matricula"))) {
@@ -142,9 +152,11 @@ public class Main {
 
                     atributos.put("estudiante", estudiante);
                     template.process(atributos, writer);
+
                     return writer;
                 } catch (Exception error) {
                     error.printStackTrace();
+
                     return null;
                 }
             });
@@ -152,8 +164,8 @@ public class Main {
             //Estableciendo la ruta para ejecutar el borrado del estudiante
             post("/borrar/:matricula", (req, res) -> {
                 int matricula = Integer.parseInt(req.params("matricula"));
-
                 Estudiante estudiante = null;
+
                 for (Estudiante est : estudiantes) {
                     if (est.getMatricula() == matricula) {
                         estudiante = est;
@@ -163,18 +175,19 @@ public class Main {
                 estudiantes.remove(estudiante);
 
                 res.redirect("/");
+
                 return null;
             });
         });
 
         notFound((req, res) -> {
-            res.status(404);
-
             StringWriter writer = new StringWriter();
             Template template = configuration.getTemplate("templates/404.ftl");
-            template.process(null, writer);
 
+            template.process(null, writer);
+            res.status(404);
             res.body(writer.toString());
+
             return writer;
         });
     }
