@@ -1,6 +1,7 @@
 <#import "/templates/base.ftl" as base>
 <@base.page>
-<#list estudiantes as estudiante>
+<#if estudiantes?size gt 0>
+    <#list estudiantes as estudiante>
     <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
         <div class="card bg-light rounded-0">
             <div class="card-body">
@@ -29,5 +30,15 @@
             </div>
         </div>
     </div>
-</#list>
+    </#list>
+    <#else>
+    <div class="col-lg-8 col-md-10 col-sm-12 mx-auto mb-3">
+        <div class="alert alert-secondary text-center">
+            Aún no se ha agregado ningún estudiante. Puedes crearlo con el botón superior o aquí: <br>
+            <a href="/estudiante/agregar" class="alert-link">
+                <i class="fas fa-user-plus"></i> Agregar estudiante
+            </a>
+        </div>
+    </div>
+</#if>
 </@base.page>
